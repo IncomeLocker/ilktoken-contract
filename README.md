@@ -12,15 +12,27 @@ Standard ERC20 token implementation with the following structure: <br>
 ## Details of components
 ### General informations
 Token contracts (proxy, lib, db) and ICO contact are linked together within some special phases. Phases affects to the following functions:
-* normal token Transfer()
-* token Transfer() with cliff,vest
-* acceptDeposit()
-* acceptOffChainDeposit()
+* normal token `Transfer()`
+* token `TransferWithVest()` with cliff,vest
+* `acceptDeposit()`
+> Only whitelisted addresses can deposit in specific phases.
+* `acceptOffChainDeposit()`
+> Only predefined addresses can call this function in specific phases. owner can manage predefined addresses with `setOffChainDepositOwner()`
 
+#### Token Sale Phases
+Owner can change between phases with `setTokenSalePhase()` function 
 Following phases are defined:
 1. **__PHASE PAUSE__**: All affected functions are disabled. 
-2. **__PHASE SALE#1__**: All affected functions are disabled, except acceptOffChainDeposit()
-3. **__PHASE SALE#2__**: All affected functions are disabled, except acceptDeposit() and acceptOffChainDeposit()
+2. **__PHASE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()`
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >25.000 ILK   | 42%           |
+| >10.000 ILK   | 37%.          |
+| >=2.000 ILK   | 33%.          |
+| <2.000 ILK    | throw         |
+
+2. **__PHASE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()` 
+3. **__PHASE SALE#2__**: All affected functions are disabled, except `acceptDeposit()` and `acceptOffChainDeposit()`
 4. **__PHASE SALE#3__**: same as SALE#2 phase but different paramteres
 5. **__PHASE PRE FINISH__**: All affected functions are enabled
 6. **__PHASE FINISH__**: All affected functions are disabled, except token transfers functions
