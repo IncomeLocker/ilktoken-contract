@@ -24,12 +24,13 @@ Owner can change between phases with `setTokenSalePhase()` function
 Following phases are defined:
 1. **__PHASE PAUSE__**: All affected functions are disabled. 
 2. **__PHASE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()`
-| Contribution  | Bonus multipl |
-| ------------- |--------------:|
-| >25.000 ILK   | 42%           |
-| >10.000 ILK   | 37%.          |
-| >=2.000 ILK   | 33%.          |
-| <2.000 ILK    | throw         |
+
+| Contribution  | Bonus multipl | | 
+| ------------- |--------------:|-|
+| >25.000 ILK   | 42%           | |
+| >10.000 ILK   | 37%           | |
+| >=2.000 ILK   | 33%           | |
+| <2.000 ILK    | throw         | |
 
 2. **__PHASE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()` 
 3. **__PHASE SALE#2__**: All affected functions are disabled, except `acceptDeposit()` and `acceptOffChainDeposit()`
