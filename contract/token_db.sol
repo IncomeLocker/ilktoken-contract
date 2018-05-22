@@ -1,7 +1,7 @@
 /*
     Token database
     token_db.sol
-    1.0.2
+    1.1.0
 */
 pragma solidity 0.4.24;
 
@@ -12,29 +12,31 @@ contract TokenDB is Owned {
     /* Declarations */
     using SafeMath for uint256;
     /* Structures */
-    // struct vesting_s {
-    //     address giver;
-    //     uint256 amount;
-    //     uint256 start;
-    //     uint256 end;
-    //     uint256 received;
-    // }
+    struct balances_s {
+        uint256 amount;
+        bool valid;
+    }
     /* Variables */
     mapping(address => mapping(address => uint256)) public allowance;
-    mapping(address => uint256) public balances;
-    // mapping(address => vesting_s[]) public vestings;
+    mapping(address => balances_s) public balances;
     address public tokenAddress;
+    address public oldDBAddress;
     /* Constructor */
-    constructor(address _owner, address _icoAddress) Owned(_owner) public {
-        balances[_icoAddress] = 44e14;
+    constructor(address _owner, address _icoAddress, address _oldDBAddress) Owned(_owner) public {
+        if ( _oldDBAddress == 0x00 ) {
+            balances[_icoAddress].amount = 44e14;
+        }
+        oldDBAddress = _oldDBAddress;
     }
     /* Externals */
     function changeTokenAddress(address _tokenAddress) external forOwner {
         tokenAddress = _tokenAddress;
     }
     function transfer(address _from, address _to, uint256 _amount) external forToken returns(bool _success) {
-        balances[_from] = balances[_from].sub(_amount);
-        balances[_to] = balances[_to].add(_amount);
+        uint256 _senderBalance = _getBalance(_from);
+        uint256 _receiverBalance = _getBalance(_to);
+        balances[_from].amount = _senderBalance.sub(_amount);
+        balances[_to].amount = _receiverBalance.add(_amount);
         return true;
     }
     function setAllowance(address _owner, address _spender, uint256 _amount) external forToken returns(bool _success) {
@@ -46,10 +48,18 @@ contract TokenDB is Owned {
         return ( true, allowance[_owner][_spender] );
     }
     function balanceOf(address _owner) public view returns(bool _success, uint256 _balance) {
-        return ( true, balances[_owner]);
+        return ( true, _getBalance(_owner) );
     }
-    // function vestingBalanceOf(address _owner) public view returns (bool _success, uint256 _value) {
-    // }
+    /* Internals */
+    function _getBalance(address _owner) internal returns(uint256 _balance) {
+        if ( ( ! balances[_owner].valid ) && oldDBAddress != 0x00 ) {
+            bool _subResult;
+            ( _subResult, _balance ) = TokenDB(oldDBAddress).balanceOf(_owner);
+            balances[_owner].amount = _balance;
+            balances[_owner].valid = true;
+        }
+        return balances[_owner].amount;
+    }
     /* Modifiers */
     modifier forToken {
         if ( tokenAddress == 0x00 ) {
