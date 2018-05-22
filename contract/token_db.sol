@@ -1,7 +1,7 @@
 /*
     Token database
     token_db.sol
-    1.0.1
+    1.0.2
 */
 pragma solidity 0.4.24;
 
@@ -25,6 +25,9 @@ contract TokenDB is Owned {
     // mapping(address => vesting_s[]) public vestings;
     address public tokenAddress;
     /* Constructor */
+    constructor(address _owner, address _icoAddress) Owned(_owner) public {
+        balances[_icoAddress] = 44e14;
+    }
     /* Externals */
     function changeTokenAddress(address _tokenAddress) external forOwner {
         tokenAddress = _tokenAddress;
