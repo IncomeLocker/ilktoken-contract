@@ -1,7 +1,7 @@
 /*
     Token database
-    token_db.sol
-    1.1.0
+    tokenDB.sol
+    2.0.0
 */
 pragma solidity 0.4.24;
 
@@ -39,6 +39,17 @@ contract TokenDB is Owned {
         balances[_to].amount = _receiverBalance.add(_amount);
         return true;
     }
+    function bulkTransfer(address _from, address[] _to, uint256[] _amount) external forToken returns(bool _success) {
+        uint256 _senderBalance = _getBalance(_from);
+        uint256 _receiverBalance;
+        uint256 i;
+        for ( i=0 ; i<_to.length ; i++ ) {
+            _receiverBalance = _getBalance(_to[i]);
+            balances[_from].amount = _senderBalance.sub(_amount[i]);
+            balances[_to[i]].amount = _receiverBalance.add(_amount[i]);
+        }
+        return true;
+    }
     function setAllowance(address _owner, address _spender, uint256 _amount) external forToken returns(bool _success) {
         allowance[_owner][_spender] = _amount;
         return true;
@@ -62,9 +73,6 @@ contract TokenDB is Owned {
     }
     /* Modifiers */
     modifier forToken {
-        if ( tokenAddress == 0x00 ) {
-            tokenAddress = msg.sender;
-        }
         require( msg.sender == tokenAddress );
         _;
     }
