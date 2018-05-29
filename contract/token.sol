@@ -1,7 +1,7 @@
 /*
     Token Proxy
     token.sol
-    1.0.0
+    1.0.1
 */
 pragma solidity 0.4.24;
 
@@ -106,7 +106,7 @@ contract Token is Owned {
             }
         }
     }
-    function balanceOf(address _owner) public view returns (uint256 _value) {
+    function balanceOf(address _owner) public view returns (uint256 _balance) {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
