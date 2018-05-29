@@ -1,7 +1,7 @@
 /*
     Token Library
     tokenLib.sol
-    1.0.0
+    1.0.1
 */
 pragma solidity 0.4.24;
 
@@ -54,9 +54,9 @@ contract TokenLib is Token {
         (_subResult, _remaining) = db.getAllowance(_owner, _spender);
         require( _subResult );
     }
-    function balanceOf(address _owner) public view returns (uint256 _value) {
+    function balanceOf(address _owner) public view returns (uint256 _balance) {
         bool _subResult;
-        (_subResult, _value) = db.balanceOf(_owner);
+        (_subResult, _balance) = db.balanceOf(_owner);
         require( _subResult );
     }
     /* Internals */
