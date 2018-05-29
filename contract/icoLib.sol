@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.0.0
+    1.0.1
 */
 pragma solidity 0.4.24;
 
@@ -38,22 +38,22 @@ contract IcoLib is Ico {
         vesting[msg.sender].claimedAmount = vesting[msg.sender].claimedAmount.add(_reward);
         require( token.transfer(msg.sender, _reward) );
     }
-    function setKYC(address[] on, address[] off) external forOwner {
+    function setKYC(address[] _on, address[] _off) external forOwner {
         uint256 i;
-        for ( i=0 ; i<on.length ; i++ ) {
-            KYC[on[i]] = true;
+        for ( i=0 ; i<_on.length ; i++ ) {
+            KYC[_on[i]] = true;
         }
-        for ( i=0 ; i<off.length ; i++ ) {
-            delete KYC[off[i]];
+        for ( i=0 ; i<_off.length ; i++ ) {
+            delete KYC[_off[i]];
         }
     }
-    function setTransferRight(address[] allow, address[] disallow) external forOwner {
+    function setTransferRight(address[] _allow, address[] _disallow) external forOwner {
         uint256 i;
-        for ( i=0 ; i<allow.length ; i++ ) {
-            transferRight[allow[i]] = true;
+        for ( i=0 ; i<_allow.length ; i++ ) {
+            transferRight[_allow[i]] = true;
         }
-        for ( i=0 ; i<disallow.length ; i++ ) {
-            delete transferRight[disallow[i]];
+        for ( i=0 ; i<_disallow.length ; i++ ) {
+            delete transferRight[_disallow[i]];
         }
     }
     function setCurrentRate(uint256 _currentRate) external forOwner {
