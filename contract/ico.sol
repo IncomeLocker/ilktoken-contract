@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    1.0.0
+    1.0.1
 */
 pragma solidity 0.4.24;
 
@@ -78,7 +78,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setKYC(address[] on, address[] off) external forOwner {
+    function setKYC(address[] _on, address[] _off) external forOwner {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
@@ -91,7 +91,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setTransferRight(address[] allow, address[] disallow) external forOwner {
+    function setTransferRight(address[] _allow, address[] _disallow) external forOwner {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
