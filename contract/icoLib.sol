@@ -60,7 +60,7 @@ contract IcoLib is Ico {
         require( _currentRate > 0 );
         currentRate = _currentRate;
     }
-    function setCurrentPhase(address _offchainUploaderAddress) external forOwner {
+    function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
         offchainUploaderAddress = _offchainUploaderAddress;
     }
     function setCurrentPhase(phaseType _phase) external forOwner {
