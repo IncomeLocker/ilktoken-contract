@@ -4,10 +4,10 @@ Solidity contract for inlock (ILK) token. Details on https://inlock.io/
 Following information based on Income Locker (inlock.io) whitepaper: https://inlock.io/wp-content/uploads/2018/04/Whitepaper_V1.04.pdf
  - Latest version: V1.04 release date: 2018.04.21
 
-Standard ERC20 token implementation with the following structure: <br>
- [1] Token [Proxy] --> Token [Library] --> Token [database]<br>
- [2] ICO contract<br>
- [3] Token multisig contract<br>
+The InLock token is made up of these contracts structure:<br>
+ - Token [Proxy] --> Token [Library] --> Token [database ]<br>
+ - ICO [Proxy] --> ICO [Library] <br>
+ - Token multisig contract
  
 ## Details of components
 ### General informations
