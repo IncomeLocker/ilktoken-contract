@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    1.0.1
+    1.1.1
 */
 pragma solidity 0.4.24;
 
@@ -117,7 +117,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setCurrentPhase(address _offchainUploaderAddress) external forOwner {
+    function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
         offchainUploaderAddress = _offchainUploaderAddress;
     }
     function setCurrentPhase(phaseType _phase) external forOwner {
