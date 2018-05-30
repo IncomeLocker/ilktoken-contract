@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    1.1.1
+    1.2.0
 */
 pragma solidity 0.4.24;
 
@@ -38,21 +38,35 @@ contract Ico is Owned {
     uint256   public privateSale2Hardcap = 64e13;
     uint256   public thisBalance = 44e14;
     address   public offchainUploaderAddress;
+    address   public setKYCAddress;
+    address   public setRateAddress;
     address   public libAddress;
     Token     public token;
     /* Constructor */
-    constructor(address _owner, address _libAddress, address _tokenAddress, address _offchainUploaderAddress) Owned(_owner) public {
+    constructor(address _owner, address _libAddress, address _tokenAddress, address _offchainUploaderAddress,
+        address _setKYCAddress, address _setRateAddress) Owned(_owner) public {
         currentPhase = phaseType.pause;
         libAddress = _libAddress;
         token = Token(_tokenAddress);
         offchainUploaderAddress = _offchainUploaderAddress;
+        setKYCAddress = _setKYCAddress;
+        setRateAddress = _setRateAddress;
     }
     /* Fallback */
     function () public payable {
         buy(msg.sender);
     }
     /* Externals */
-    function setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock) external forOwner {
+    function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
+        offchainUploaderAddress = _offchainUploaderAddress;
+    }
+    function setKYCAddress(address _setKYCAddress) external forOwner {
+        setKYCAddress = _setKYCAddress;
+    }
+    function setSetRateAddress(address _setRateAddress) external forOwner {
+        setRateAddress = _setRateAddress;
+    }
+    function setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock) external {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
@@ -78,7 +92,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setKYC(address[] _on, address[] _off) external forOwner {
+    function setKYC(address[] _on, address[] _off) external {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
@@ -91,7 +105,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setTransferRight(address[] _allow, address[] _disallow) external forOwner {
+    function setTransferRight(address[] _allow, address[] _disallow) external {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
@@ -104,7 +118,7 @@ contract Ico is Owned {
             }
         }
     }
-    function setCurrentRate(uint256 _currentRate) external forOwner {
+    function setCurrentRate(uint256 _currentRate) external {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
@@ -117,11 +131,18 @@ contract Ico is Owned {
             }
         }
     }
-    function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
-        offchainUploaderAddress = _offchainUploaderAddress;
-    }
-    function setCurrentPhase(phaseType _phase) external forOwner {
-        currentPhase = _phase;
+    function setCurrentPhase(phaseType _phase) external {
+        address _trg = libAddress;
+        assembly {
+            let m := mload(0x20)
+            calldatacopy(m, 0, calldatasize)
+            let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
+            switch success case 0 {
+                revert(0, 0)
+            } default {
+                return(m, 0)
+            }
+        }
     }
     function offchainUpload(address[] _beneficiaries, uint256[] _rewards) external {
         address _trg = libAddress;
