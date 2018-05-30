@@ -66,6 +66,8 @@ For transfering tokens it should have at least one of the following criterias:
 - `address _libAddress`
 - `address _tokenAddress`
 - `address _offchainUploaderAddress`
+- `address _setKYCAddress`
+- `address _setRateAddress`
 - `address owner`
 
 ### Structures
@@ -92,6 +94,8 @@ For transfering tokens it should have at least one of the following criterias:
 - `uint256 privateSale2Hardcap`
 - `uint256 thisBalance`
 - `address offchainUploaderAddress`
+- `address setKYCAddress`
+- `address setRateAddress`
 - `address libAddress`
 - `address token`
 
@@ -100,11 +104,13 @@ For transfering tokens it should have at least one of the following criterias:
 - `claimVesting()`
 
 ### Restricted functions
+- `setOffchainUploaderAddress(address _offchainUploaderAddress)`
+- `setKYCAddress(address _setKYCAddress)`
+- `setSetRateAddress(address _setRateAddress)`
 - `setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock)`
 - `setKYC(address[] _on, address[] _off)`
 - `setTransferRight(address[] _allow, address[] _disallow)`
 - `setCurrentRate(uint256 _currentRate)`
-- `setOffchainUploaderAddress(address _offchainUploaderAddress)`
 - `setCurrentPhase(phaseType _phase)`
 - `offchainUpload(address[] _beneficiaries, uint256[] _rewards)`
 - `replaceOwner(address _owner)`
