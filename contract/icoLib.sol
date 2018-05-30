@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.0.1
+    1.1.0
 */
 pragma solidity 0.4.24;
 
@@ -9,13 +9,13 @@ import "./ico.sol";
 
 contract IcoLib is Ico {
     /* Constructor */
-    constructor(address _owner, address _libAddress, address _tokenAddress, address _offchainUploaderAddress)
-        Ico(_owner, _libAddress, _tokenAddress, _offchainUploaderAddress) public {}
+    constructor(address _owner, address _libAddress, address _tokenAddress, address _offchainUploaderAddress, address _setKYCAddress, address _setRateAddress)
+        Ico(_owner, _libAddress, _tokenAddress, _offchainUploaderAddress, _setKYCAddress, _setRateAddress) public {}
     /* Externals */
     function setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock) external forOwner {
         require( _beneficiary != 0x00 );
+        thisBalance = thisBalance.add( vesting[_beneficiary].amount.sub(vesting[_beneficiary].claimedAmount) );
         if ( _amount == 0 ) {
-            thisBalance = thisBalance.add( vesting[_beneficiary].amount.sub(vesting[_beneficiary].claimedAmount) );
             delete vesting[_beneficiary];
             emit VestingDefined(_beneficiary, 0, 0, 0);
         } else {
@@ -38,8 +38,9 @@ contract IcoLib is Ico {
         vesting[msg.sender].claimedAmount = vesting[msg.sender].claimedAmount.add(_reward);
         require( token.transfer(msg.sender, _reward) );
     }
-    function setKYC(address[] _on, address[] _off) external forOwner {
+    function setKYC(address[] _on, address[] _off) external {
         uint256 i;
+        require( msg.sender == setKYCAddress );
         for ( i=0 ; i<_on.length ; i++ ) {
             KYC[_on[i]] = true;
         }
@@ -56,12 +57,10 @@ contract IcoLib is Ico {
             delete transferRight[_disallow[i]];
         }
     }
-    function setCurrentRate(uint256 _currentRate) external forOwner {
-        require( _currentRate > 0 );
+    function setCurrentRate(uint256 _currentRate) external {
+        require( msg.sender == setRateAddress );
+        require( _currentRate >= currentRateM );
         currentRate = _currentRate;
-    }
-    function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
-        offchainUploaderAddress = _offchainUploaderAddress;
     }
     function setCurrentPhase(phaseType _phase) external forOwner {
         currentPhase = _phase;
