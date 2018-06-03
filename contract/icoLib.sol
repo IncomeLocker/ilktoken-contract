@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.1.2
+    1.1.3
 */
 pragma solidity 0.4.24;
 
@@ -83,11 +83,11 @@ contract IcoLib is Ico {
         }
         token.bulkTransfer(_beneficiaries, _rewards);
     }
-    function buy(address _beneficiary) public payable {
+    function buy() public payable {
         uint256 _reward;
         bool    _subResult;
         require( currentPhase == phaseType.privateSale2 || currentPhase == phaseType.sales || currentPhase == phaseType.preFinish );
-        require( KYC[_beneficiary] );
+        require( KYC[msg.sender] );
         ( _subResult, _reward ) = calculateReward(msg.value);
         require( _reward > 0 && _subResult );
         thisBalance = thisBalance.sub(_reward);
@@ -97,8 +97,8 @@ contract IcoLib is Ico {
         } else if ( currentPhase == phaseType.privateSale2 ) {
             privateSale2Hardcap = privateSale2Hardcap.sub(_reward);
         }
-        require( token.transfer(_beneficiary, _reward) );
-        emit Brought(msg.sender, _beneficiary, msg.value, _reward);
+        require( token.transfer(msg.sender, _reward) );
+        emit Brought(msg.sender, msg.sender, msg.value, _reward);
     }
     /* Constants */
     function allowTransfer(address _owner) public view returns (bool _success, bool _allow) {
