@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    1.2.0
+    1.2.1
 */
 pragma solidity 0.4.24;
 
@@ -54,7 +54,7 @@ contract Ico is Owned {
     }
     /* Fallback */
     function () public payable {
-        buy(msg.sender);
+        buy();
     }
     /* Externals */
     function setOffchainUploaderAddress(address _offchainUploaderAddress) external forOwner {
@@ -157,7 +157,7 @@ contract Ico is Owned {
             }
         }
     }
-    function buy(address _beneficiary) public payable {
+    function buy() public payable {
         address _trg = libAddress;
         assembly {
             let m := mload(0x20)
