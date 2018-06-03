@@ -1,7 +1,7 @@
 /*
     Token database
     tokenDB.sol
-    2.0.0
+    2.0.1
 */
 pragma solidity 0.4.24;
 
@@ -22,11 +22,12 @@ contract TokenDB is Owned {
     address public tokenAddress;
     address public oldDBAddress;
     /* Constructor */
-    constructor(address _owner, address _icoAddress, address _oldDBAddress) Owned(_owner) public {
+    constructor(address _owner, address _tokenAddress, address _icoAddress, address _oldDBAddress) Owned(_owner) public {
         if ( _oldDBAddress == 0x00 ) {
             balances[_icoAddress].amount = 44e14;
         }
         oldDBAddress = _oldDBAddress;
+        tokenAddress = _tokenAddress;
     }
     /* Externals */
     function changeTokenAddress(address _tokenAddress) external forOwner {
