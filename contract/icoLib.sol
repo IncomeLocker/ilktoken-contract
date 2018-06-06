@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.1.3
+    1.1.4
 */
 pragma solidity 0.4.24;
 
@@ -153,7 +153,7 @@ contract IcoLib is Ico {
     }
     function calcVesting(address _owner) public view returns(bool _success, uint256 _reward) {
         vesting_s memory _vesting = vesting[_owner];
-        if ( _vesting.amount == 0 || block.number <= _vesting.startBlock ) {
+        if ( _vesting.amount == 0 || block.number < _vesting.startBlock ) {
             return ( true, 0 );
         }
         _reward = _vesting.amount.mul( block.number.sub(_vesting.startBlock) ).div( _vesting.endBlock.sub(_vesting.startBlock) );
