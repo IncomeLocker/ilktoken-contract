@@ -1,7 +1,7 @@
 /*
     Token database
     tokenDB.sol
-    2.0.1
+    2.1.0
 */
 pragma solidity 0.4.24;
 
@@ -46,9 +46,10 @@ contract TokenDB is Owned {
         uint256 i;
         for ( i=0 ; i<_to.length ; i++ ) {
             _receiverBalance = _getBalance(_to[i]);
-            balances[_from].amount = _senderBalance.sub(_amount[i]);
+            _senderBalance = _senderBalance.sub(_amount[i]);
             balances[_to[i]].amount = _receiverBalance.add(_amount[i]);
         }
+        balances[_from].amount = _senderBalance.sub(_amount[i]);
         return true;
     }
     function setAllowance(address _owner, address _spender, uint256 _amount) external forToken returns(bool _success) {
