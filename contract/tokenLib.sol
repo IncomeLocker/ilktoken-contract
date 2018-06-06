@@ -1,7 +1,7 @@
 /*
     Token Library
     tokenLib.sol
-    1.0.1
+    1.1.0
 */
 pragma solidity 0.4.24;
 
@@ -31,6 +31,7 @@ contract TokenLib is Token {
         for ( i=0 ; i<_to.length ; i++ ) {
             require( _amount[i] > 0 );
             require( _to[i] != 0x00 );
+            require( msg.sender != _to[i] );
             emit Transfer(msg.sender, _to[i], _amount[i]);
         }
         return true;
