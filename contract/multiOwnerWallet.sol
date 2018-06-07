@@ -1,7 +1,7 @@
 /*
     Multi owner wallet for Inlock token
     multiOwnerWallet.sol
-    1.0.0
+    1.1.0
 */
 pragma solidity 0.4.24;
 
@@ -34,11 +34,15 @@ contract MultiOwnerWallet {
         }
         ownerCounter = _owners.length;
     }
+    /* Fallback */
+    function () public {
+        revert();
+    }
     /* Externals */
     function transfer(address _to, uint256 _amount) external returns (bool _success) {
         bytes32 _hash;
         bool    _subResult;
-        _hash = keccak256(address(token), _to, _amount);
+        _hash = keccak256(address(token), 'transfer', _to, _amount);
         if ( actions[_hash].origin == 0x00 ) {
             emit newTransferAction(_hash, _to, _amount, msg.sender);
         }
@@ -49,12 +53,12 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeTransferAction(address _to, uint256 _amount) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), _to, _amount));
+        return revokeAction(keccak256(address(token), 'transfer', _to, _amount));
     }
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         bytes32 _hash;
         bool    _subResult;
-        _hash = keccak256(address(token), _to, _amount);
+        _hash = keccak256(address(token), 'bulkTransfer', _to, _amount);
         if ( actions[_hash].origin == 0x00 ) {
             emit newBulkTransferAction(_hash, _to, _amount, msg.sender);
         }
@@ -65,7 +69,7 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeBulkTransferAction(address[] _to, uint256[] _amount) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), _to, _amount));
+        return revokeAction(keccak256(address(token), 'bulkTransfer', _to, _amount));
     }
     function changeTokenAddress(address _tokenAddress) external returns (bool _success) {
         bytes32 _hash;
