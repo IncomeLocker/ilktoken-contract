@@ -1,7 +1,7 @@
 /*
     Multi owner wallet for Inlock token
     multiOwnerWallet.sol
-    1.1.0
+    1.2.0
 */
 pragma solidity 0.4.24;
 
@@ -15,7 +15,8 @@ contract MultiOwnerWallet {
     struct action_s {
         address origin;
         uint256 voteCounter;
-        mapping(address => bool) voters;
+        uint256 startBlock;
+        mapping(address => uint256) voters;
     }
     /* Variables */
     mapping(address => bool) public owners;
@@ -53,7 +54,8 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeTransferAction(address _to, uint256 _amount) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), 'transfer', _to, _amount));
+        revokeAction(keccak256(address(token), 'transfer', _to, _amount));
+        return true;
     }
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         bytes32 _hash;
@@ -69,7 +71,8 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeBulkTransferAction(address[] _to, uint256[] _amount) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), 'bulkTransfer', _to, _amount));
+        revokeAction(keccak256(address(token), 'bulkTransfer', _to, _amount));
+        return true;
     }
     function changeTokenAddress(address _tokenAddress) external returns (bool _success) {
         bytes32 _hash;
@@ -83,7 +86,8 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeChangeTokenAction(address _tokenAddress) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), 'changeTokenAddress', _tokenAddress));
+        revokeAction(keccak256(address(token), 'changeTokenAddress', _tokenAddress));
+        return true;
     }
     function addNewOwner(address _owner) external returns (bool _success) {
         bytes32 _hash;
@@ -99,7 +103,8 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeAddNewOwnerAction(address _owner) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), 'addNewOwner', _owner));
+        revokeAction(keccak256(address(token), 'addNewOwner', _owner));
+        return true;
     }
     function delOwner(address _owner) external returns (bool _success) {
         bytes32 _hash;
@@ -115,10 +120,12 @@ contract MultiOwnerWallet {
         return true;
     }
     function revokeDelOwnerAction(address _owner) external returns (bool _success) {
-        return revokeAction(keccak256(address(token), 'delOwner', _owner));
+        revokeAction(keccak256(address(token), 'delOwner', _owner));
+        return true;
     }
     function revokeActionByHash(bytes32 _hash) external returns (bool _success) {
-        return revokeAction(_hash);
+        revokeAction(_hash);
+        return true;
     }
     /* Constants */
     function selfBalance() public view returns (uint256 _balance) {
@@ -128,7 +135,7 @@ contract MultiOwnerWallet {
         return token.balanceOf(_owner);
     }
     function hasVoted(bytes32 _hash, address _owner) public view returns (bool _voted) {
-        return actions[_hash].voters[_owner];
+        return actions[_hash].origin != 0x00 && actions[_hash].voters[_owner] == actions[_hash].startBlock;
     }
     /* Internals */
     function doVote(bytes32 _hash) internal returns (bool _voted) {
@@ -136,8 +143,9 @@ contract MultiOwnerWallet {
         if ( actions[_hash].origin == 0x00 ) {
             actions[_hash].origin = msg.sender;
             actions[_hash].voteCounter = 1;
-        } else if ( ( ! actions[_hash].voters[msg.sender] ) && actions[_hash].origin != msg.sender ) {
-            actions[_hash].voters[msg.sender] = true;
+            actions[_hash].startBlock = block.number;
+        } else if ( ( actions[_hash].voters[msg.sender] != actions[_hash].startBlock ) && actions[_hash].origin != msg.sender ) {
+            actions[_hash].voters[msg.sender] = actions[_hash].startBlock;
             actions[_hash].voteCounter = actions[_hash].voteCounter.add(1);
             emit vote(_hash, msg.sender);
         }
@@ -147,11 +155,10 @@ contract MultiOwnerWallet {
             delete actions[_hash];
         }
     }
-    function revokeAction(bytes32 _hash) internal returns (bool _success) {
+    function revokeAction(bytes32 _hash) internal {
         require( actions[_hash].origin == msg.sender );
         delete actions[_hash];
         emit revokedAction(_hash);
-        return true;
     }
     /* Events */
     event newTransferAction(bytes32 _hash, address _to, uint256 _amount, address _origin);
