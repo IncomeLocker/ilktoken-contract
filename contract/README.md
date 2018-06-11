@@ -35,6 +35,7 @@ For transfering tokens it should have at least one of the following criterias:
 ## `TokenDB` contract
 ### Constructor arguments
 - `address _owner`
+- `address _tokenAddress`
 - `address _icoAddress`
 - `address _oldDBAddress`
 
@@ -58,7 +59,6 @@ For transfering tokens it should have at least one of the following criterias:
 ### Constant functions
 - `getAllowance(address _owner, address _spender)`
 - `balanceOf(address _owner) public view returns(bool _success, uint256 _balance)`
-- `calcVesting(address _owner)`
 
 ## `Ico` contract
 ### Constructor arguments
@@ -68,7 +68,6 @@ For transfering tokens it should have at least one of the following criterias:
 - `address _offchainUploaderAddress`
 - `address _setKYCAddress`
 - `address _setRateAddress`
-- `address owner`
 
 ### Structures
 - `vesting_s`
@@ -104,9 +103,10 @@ For transfering tokens it should have at least one of the following criterias:
 - `claimVesting()`
 
 ### Restricted functions
-- `setOffchainUploaderAddress(address _offchainUploaderAddress)`
-- `setKYCAddress(address _setKYCAddress)`
-- `setSetRateAddress(address _setRateAddress)`
+- `changeLibAddress(address _libAddress)`
+- `changeOffchainUploaderAddress(address _offchainUploaderAddress)`
+- `changeKYCAddress(address _setKYCAddress)`
+- `changeSetRateAddress(address _setRateAddress)`
 - `setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock)`
 - `setKYC(address[] _on, address[] _off)`
 - `setTransferRight(address[] _allow, address[] _disallow)`
@@ -135,6 +135,7 @@ For transfering tokens it should have at least one of the following criterias:
 - `action_s`
   - `address origin`
   - `uint256 voteCounter`
+  - `uint256 startBlock`
   - `mapping(address => bool) voters`
 
 ### Variables
