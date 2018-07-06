@@ -72,7 +72,7 @@ contract Ico is Owned {
     function setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -85,7 +85,7 @@ contract Ico is Owned {
     function claimVesting() external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -98,7 +98,7 @@ contract Ico is Owned {
     function setKYC(address[] _on, address[] _off) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -111,7 +111,7 @@ contract Ico is Owned {
     function setTransferRight(address[] _allow, address[] _disallow) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -124,7 +124,7 @@ contract Ico is Owned {
     function setCurrentRate(uint256 _currentRate) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -137,7 +137,7 @@ contract Ico is Owned {
     function setCurrentPhase(phaseType _phase) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -150,7 +150,7 @@ contract Ico is Owned {
     function offchainUpload(address[] _beneficiaries, uint256[] _rewards) external {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -163,7 +163,7 @@ contract Ico is Owned {
     function buy() public payable {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0)
             switch success case 0 {
@@ -177,7 +177,7 @@ contract Ico is Owned {
     function allowTransfer(address _owner) public view returns (bool _success, bool _allow) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x40)
             switch success case 0 {
@@ -190,7 +190,7 @@ contract Ico is Owned {
     function calculateReward(uint256 _input) public view returns (bool _success, uint256 _reward) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x40)
             switch success case 0 {
@@ -203,7 +203,7 @@ contract Ico is Owned {
     function calcVesting(address _owner) public view returns(bool _success, uint256 _reward) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x40)
             switch success case 0 {
