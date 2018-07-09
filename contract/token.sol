@@ -43,7 +43,7 @@ contract Token is Owned {
     function approve(address _spender, uint256 _value) external returns (bool _success) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
@@ -56,7 +56,7 @@ contract Token is Owned {
     function transfer(address _to, uint256 _amount) external returns (bool _success) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
@@ -69,7 +69,7 @@ contract Token is Owned {
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
@@ -82,7 +82,7 @@ contract Token is Owned {
     function transferFrom(address _from, address _to, uint256 _amount) external returns (bool _success) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
@@ -96,7 +96,7 @@ contract Token is Owned {
     function allowance(address _owner, address _spender) public view returns (uint256 _remaining) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
@@ -109,7 +109,7 @@ contract Token is Owned {
     function balanceOf(address _owner) public view returns (uint256 _balance) {
         address _trg = libAddress;
         assembly {
-            let m := mload(0x20)
+            let m := mload(0x40)
             calldatacopy(m, 0, calldatasize)
             let success := delegatecall(gas, _trg, m, calldatasize, m, 0x20)
             switch success case 0 {
