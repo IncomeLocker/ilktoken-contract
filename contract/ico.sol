@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    2.0.0
+    2.0.1
 */
 pragma solidity 0.4.24;
 
@@ -34,9 +34,9 @@ contract Ico is Owned {
     phaseType public currentPhase;
     uint256   public currentRate;
     uint256   public currentRateM = 1e3;
-    uint256   public privateSale1Hardcap = 4e14;
-    uint256   public privateSale2Hardcap = 64e13;
-    uint256   public thisBalance = 44e14;
+    uint256   public privateSale1Hardcap = 4e16;
+    uint256   public privateSale2Hardcap = 64e15;
+    uint256   public thisBalance = 44e16;
     address   public offchainUploaderAddress;
     address   public setKYCAddress;
     address   public setRateAddress;
