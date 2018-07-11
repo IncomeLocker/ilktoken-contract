@@ -1,7 +1,7 @@
 /*
     Multi owner wallet for Inlock token
     multiOwnerWallet.sol
-    1.2.0
+    1.3.0
 */
 pragma solidity 0.4.24;
 
@@ -15,7 +15,7 @@ contract MultiOwnerWallet {
     struct action_s {
         address origin;
         uint256 voteCounter;
-        uint256 startBlock;
+        uint256 uid;
         mapping(address => uint256) voters;
     }
     /* Variables */
@@ -23,6 +23,7 @@ contract MultiOwnerWallet {
     mapping(bytes32 => action_s) public actions;
     uint256 public actionVotedRate;
     uint256 public ownerCounter;
+    uint256 public voteUID;
     Token public token;
     /* Constructor */
     constructor(address _tokenAddress, uint256 _actionVotedRate, address[] _owners) public {
@@ -135,17 +136,18 @@ contract MultiOwnerWallet {
         return token.balanceOf(_owner);
     }
     function hasVoted(bytes32 _hash, address _owner) public view returns (bool _voted) {
-        return actions[_hash].origin != 0x00 && actions[_hash].voters[_owner] == actions[_hash].startBlock;
+        return actions[_hash].origin != 0x00 && actions[_hash].voters[_owner] == actions[_hash].uid;
     }
     /* Internals */
     function doVote(bytes32 _hash) internal returns (bool _voted) {
         require( owners[msg.sender] );
         if ( actions[_hash].origin == 0x00 ) {
+            voteUID = voteUID.add(1);
             actions[_hash].origin = msg.sender;
             actions[_hash].voteCounter = 1;
-            actions[_hash].startBlock = block.number;
-        } else if ( ( actions[_hash].voters[msg.sender] != actions[_hash].startBlock ) && actions[_hash].origin != msg.sender ) {
-            actions[_hash].voters[msg.sender] = actions[_hash].startBlock;
+            actions[_hash].uid = voteUID;
+        } else if ( ( actions[_hash].voters[msg.sender] != actions[_hash].uid ) && actions[_hash].origin != msg.sender ) {
+            actions[_hash].voters[msg.sender] = actions[_hash].uid;
             actions[_hash].voteCounter = actions[_hash].voteCounter.add(1);
             emit vote(_hash, msg.sender);
         }
