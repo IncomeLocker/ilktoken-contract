@@ -1,7 +1,7 @@
 /*
     Token Proxy
     token.sol
-    1.0.1
+    1.0.2
 */
 pragma solidity 0.4.24;
 
@@ -17,7 +17,7 @@ contract Token is Owned {
     string  public name = "Inlock token";
     string  public symbol = "ILK";
     uint8   public decimals = 8;
-    uint256 public totalSupply = 44e14;
+    uint256 public totalSupply = 44e16;
     address public libAddress;
     TokenDB public db;
     Ico public ico;
