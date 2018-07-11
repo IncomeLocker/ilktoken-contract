@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Proxy
     ico.sol
-    2.0.1
+    2.1.0
 */
 pragma solidity 0.4.24;
 
@@ -17,7 +17,10 @@ contract Ico is Owned {
         pause,
         privateSale1,
         privateSale2,
-        sales,
+        sales1,
+        sales2,
+        sales3,
+        sales4,
         preFinish,
         finish
     }
