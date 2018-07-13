@@ -1,7 +1,7 @@
 /*
     Multi owner wallet for Inlock token
     multiOwnerWallet.sol
-    1.3.0
+    2.0.0
 */
 pragma solidity 0.4.24;
 
@@ -54,10 +54,6 @@ contract MultiOwnerWallet {
         }
         return true;
     }
-    function revokeTransferAction(address _to, uint256 _amount) external returns (bool _success) {
-        revokeAction(keccak256(address(token), 'transfer', _to, _amount));
-        return true;
-    }
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         bytes32 _hash;
         bool    _subResult;
@@ -71,10 +67,6 @@ contract MultiOwnerWallet {
         }
         return true;
     }
-    function revokeBulkTransferAction(address[] _to, uint256[] _amount) external returns (bool _success) {
-        revokeAction(keccak256(address(token), 'bulkTransfer', _to, _amount));
-        return true;
-    }
     function changeTokenAddress(address _tokenAddress) external returns (bool _success) {
         bytes32 _hash;
         _hash = keccak256(address(token), 'changeTokenAddress', _tokenAddress);
@@ -84,10 +76,6 @@ contract MultiOwnerWallet {
         if ( doVote(_hash) ) {
             token = Token(_tokenAddress);
         }
-        return true;
-    }
-    function revokeChangeTokenAction(address _tokenAddress) external returns (bool _success) {
-        revokeAction(keccak256(address(token), 'changeTokenAddress', _tokenAddress));
         return true;
     }
     function addNewOwner(address _owner) external returns (bool _success) {
@@ -103,10 +91,6 @@ contract MultiOwnerWallet {
         }
         return true;
     }
-    function revokeAddNewOwnerAction(address _owner) external returns (bool _success) {
-        revokeAction(keccak256(address(token), 'addNewOwner', _owner));
-        return true;
-    }
     function delOwner(address _owner) external returns (bool _success) {
         bytes32 _hash;
         require( owners[_owner] );
@@ -118,14 +102,6 @@ contract MultiOwnerWallet {
             ownerCounter = ownerCounter.sub(1);
             owners[_owner] = false;
         }
-        return true;
-    }
-    function revokeDelOwnerAction(address _owner) external returns (bool _success) {
-        revokeAction(keccak256(address(token), 'delOwner', _owner));
-        return true;
-    }
-    function revokeActionByHash(bytes32 _hash) external returns (bool _success) {
-        revokeAction(_hash);
         return true;
     }
     /* Constants */
@@ -157,11 +133,6 @@ contract MultiOwnerWallet {
             delete actions[_hash];
         }
     }
-    function revokeAction(bytes32 _hash) internal {
-        require( actions[_hash].origin == msg.sender );
-        delete actions[_hash];
-        emit revokedAction(_hash);
-    }
     /* Events */
     event newTransferAction(bytes32 _hash, address _to, uint256 _amount, address _origin);
     event newBulkTransferAction(bytes32 _hash, address[] _to, uint256[] _amount, address _origin);
@@ -169,6 +140,5 @@ contract MultiOwnerWallet {
     event newAddNewOwnerAction(bytes32 _hash, address _owner, address _origin);
     event newDelOwnerAction(bytes32 _hash, address _owner, address _origin);
     event vote(bytes32 _hash, address _voter);
-    event revokedAction(bytes32 _hash);
     event votedAction(bytes32 _hash);
 }

@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.1.4
+    1.2.0
 */
 pragma solidity 0.4.24;
 
@@ -86,7 +86,13 @@ contract IcoLib is Ico {
     function buy() public payable {
         uint256 _reward;
         bool    _subResult;
-        require( currentPhase == phaseType.privateSale2 || currentPhase == phaseType.sales || currentPhase == phaseType.preFinish );
+        require( currentPhase == phaseType.privateSale2 || 
+            currentPhase == phaseType.sales1 || 
+            currentPhase == phaseType.sales2 || 
+            currentPhase == phaseType.sales3 || 
+            currentPhase == phaseType.sales4 || 
+            currentPhase == phaseType.preFinish
+        );
         require( KYC[msg.sender] );
         ( _subResult, _reward ) = calculateReward(msg.value);
         require( _reward > 0 && _subResult );
@@ -130,17 +136,27 @@ contract IcoLib is Ico {
                 _reward = _amount.mul(129).div(100);
             } else if ( _amount >= 100e11 ) {
                 _reward = _amount.mul(124).div(100);
+            } else if ( _amount >=  10e11 ) {
+                _reward = _amount.mul(121).div(100);
             }
             if ( _reward > 0 && privateSale2Hardcap < _reward ) {
                 _reward = 0;
             }
-        } else if ( currentPhase == phaseType.sales ) {
-            if        ( _amount >=  10e11 ) {
+        } else if ( currentPhase == phaseType.sales1 ) {
+            if        ( _amount >=   1e11 ) {
                 _reward = _amount.mul(117).div(100);
-            } else if ( _amount >=   2e11 ) {
+            }
+        } else if ( currentPhase == phaseType.sales2 ) {
+            if        ( _amount >=   1e11 ) {
                 _reward = _amount.mul(112).div(100);
-            } else {
+            }
+        } else if ( currentPhase == phaseType.sales3 ) {
+            if        ( _amount >=   1e11 ) {
                 _reward = _amount.mul(109).div(100);
+            }
+        } else if ( currentPhase == phaseType.sales4 ) {
+            if        ( _amount >=   1e11 ) {
+                _reward = _amount.mul(102).div(100);
             }
         } else if ( currentPhase == phaseType.preFinish ) {
             if        ( _amount >=   1e11 ) {

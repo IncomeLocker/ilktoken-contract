@@ -84,9 +84,12 @@ For transfering tokens it should have at least one of the following criterias:
   - 0 = `pause`
   - 1 = `privateSale1`
   - 2 = `privateSale2`
-  - 3 = `sales`
-  - 4 = `preFinish`
-  - 5 = `finish`
+  - 3 = `sales1`
+  - 4 = `sales2`
+  - 5 = `sales3`
+  - 6 = `sales4`
+  - 7 = `preFinish`
+  - 8 = `finish`
 - `uint256 currentRate`
 - `uint256 currentRateM`
 - `uint256 privateSale1Hardcap`
@@ -135,7 +138,7 @@ For transfering tokens it should have at least one of the following criterias:
 - `action_s`
   - `address origin`
   - `uint256 voteCounter`
-  - `uint256 startBlock`
+  - `uint256 uid`
   - `mapping(address => bool) voters`
 
 ### Variables
@@ -143,20 +146,15 @@ For transfering tokens it should have at least one of the following criterias:
 - `mapping(bytes32 => action_s) actions`
 - `uint256 actionVotedRate`
 - `uint256 ownerCounter`
+- `uint256 voteUID`
 - `address token`
 
 ### Restricted functions
 - `transfer(address _to, uint256 _amount)`
-- `revokeTransferAction(address _to, uint256 _amount)`
 - `bulkTransfer(address[] _to, uint256[] _amount)`
-- `revokeBulkTransferAction(address[] _to, uint256[] _amount)`
 - `changeTokenAddress(address _tokenAddress)`
-- `revokeChangeTokenAction(address _tokenAddress)`
 - `addNewOwner(address _owner)`
-- `revokeAddNewOwnerAction(address _owner)`
 - `delOwner(address _owner)`
-- `revokeDelOwnerAction(address _owner)`
-- `revokeActionByHash(bytes32 _hash)`
 
 ### Constant functions
 - `selfBalance()`
@@ -170,5 +168,4 @@ For transfering tokens it should have at least one of the following criterias:
 - `newAddNewOwnerAction(bytes32 _hash, address _owner, address _origin)`
 - `newDelOwnerAction(bytes32 _hash, address _owner, address _origin)`
 - `vote(bytes32 _hash, address _voter)`
-- `revokedAction(bytes32 _hash)`
 - `votedAction(bytes32 _hash)`
