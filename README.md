@@ -9,6 +9,18 @@ The InLock token is made up of these contracts structure:<br>
  - ICO [Proxy] --> ICO [Library] <br>
  - Token multisig contract
  
+ | _     | Phases | Code | Planned date |
+| ---------------- |--------------:|:----------:|--------:|
+|   | pause | 0 | between phases |
+|   | privateSale1 | 1 | until 15/AUG |
+|   | privateSale2 | 2 | until 12/SEPT |
+|   | sales1 | 3 | 15/SEPT - 21/SEPT |
+|   | sales2 | 4 | 22/SEPT - 28/SEPT |
+|   | sales3 | 5 | 29/SEPT - 5/OCT |
+|   | sales4 | 6 | 6/OCT - 12/OCT |
+|   | preFinish | 7 | 13/OCT - token deploy | 
+|   | finish | 8 | TBA |
+
 ## Deployed contracts
 Contract are deployed to the Ethereum Foundation (main) network.
 
