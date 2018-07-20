@@ -81,8 +81,8 @@ Following phases are defined:
 
 | Contribution     | Bonus multipl |
 | ---------------- |--------------:|
-| >2.500.000 ILK  | 42% |
-| >1.000.000 ILK  | 37% |
+| >=2.500.000 ILK  | 42% |
+| >=1.000.000 ILK  | 37% |
 | >=200.000 ILK  | 33% |
 | <200.000 ILK   | throw |
 
@@ -90,8 +90,8 @@ Following phases are defined:
 
 | Contribution  | Bonus multipl |
 | ------------- |--------------:|
-| >12.500.000 ILK   | 29% |
-| >10.000.000 ILK   | 24% |
+| >=12.500.000 ILK   | 29% |
+| >=10.000.000 ILK   | 24% |
 | >=1.000.000 ILK   | 21% |
 | <1.000.000 ILK    | throw |
 
