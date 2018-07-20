@@ -79,56 +79,56 @@ Following phases are defined:
 1. **__PHASE PAUSE__**: All affected functions are disabled. 
 2. **__PHASE PRIVATE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()`
 
-| Contribution     | Bonus multipl | | 
-| ---------------- |--------------:|-|
-| >25.000.000 ILK  | 42% | |
-| >10.000.000 ILK  | 37% | |
-| >=2.000.000 ILK  | 33% | |
-| <2.000.000 ILK   | throw | |
+| Contribution     | Bonus multipl |
+| ---------------- |--------------:|
+| >25.000.000 ILK  | 42% |
+| >10.000.000 ILK  | 37% |
+| >=2.000.000 ILK  | 33% |
+| <2.000.000 ILK   | throw |
 
 3. **__PHASE PRIVATE SALE#2__**: All affected functions are disabled, except `acceptDeposit()` and `acceptOffChainDeposit()`
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >125.000.000 ILK   | 29% | |
-| >100.000.000 ILK   | 24% | |
-| >=10.000.000 ILK   | 21% | |
-| <10.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >125.000.000 ILK   | 29% |
+| >100.000.000 ILK   | 24% |
+| >=10.000.000 ILK   | 21% |
+| <10.000.000 ILK    | throw |
 
 4. **__PHASE SALE#1__**: same as PRIVATE SALE#2 phase but different parameters
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000.000 ILK   | 17% | |
-| <1.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=1.000.000 ILK   | 17% |
+| <1.000.000 ILK    | throw |
 
 5. **__PHASE SALE#2__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000.000 ILK   | 12% | |
-| <1.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=1.000.000 ILK   | 12% |
+| <1.000.000 ILK    | throw |
 
 6. **__PHASE SALE#3__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000.000 ILK   | 9% | |
-| <1.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=1.000.000 ILK   | 9% |
+| <1.000.000 ILK    | throw |
 
 7. **__PHASE SALE#4__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000.000 ILK   | 2% | |
-| <1.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=1.000.000 ILK   | 2% |
+| <1.000.000 ILK    | throw |
 
 8. **__PHASE PRE FINISH__**: All affected functions are enabled
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000.000 ILK   | 0% | |
-| <1.000.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=1.000.000 ILK   | 0% |
+| <1.000.000 ILK    | throw |
 
 9. **__PHASE FINISH__**: All affected functions are disabled, except token transfers functions
 
