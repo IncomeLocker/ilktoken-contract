@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.2.1
+    1.2.2
 */
 pragma solidity 0.4.24;
 
@@ -116,7 +116,7 @@ contract IcoLib is Ico {
         if ( currentRate == 0 || _input == 0 ) {
             return;
         }
-        _amount = _input.mul(1e8).mul(currentRate).div(1e18).div(currentRateM).div(100); // 1 token eq 0.01 USD
+        _amount = _input.mul(1e8).mul(currentRate).div(1e18).div(currentRateM).mul(100); // 1 token eq 0.01 USD
         if ( _amount == 0 ) {
             return;
         }
