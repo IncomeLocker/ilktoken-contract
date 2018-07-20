@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.3.0
+    1.3.1
 */
 pragma solidity 0.4.24;
 
@@ -9,8 +9,8 @@ import "./ico.sol";
 
 contract IcoLib is Ico {
     /* Constructor */
-    constructor(address _owner, address _libAddress, address _tokenAddress, address _offchainUploaderAddress, address _setKYCAddress, address _setRateAddress)
-        Ico(_owner, _libAddress, _tokenAddress, _offchainUploaderAddress, _setKYCAddress, _setRateAddress) public {}
+    constructor(address _owner, address _tokenAddress, address _offchainUploaderAddress, address _setKYCAddress, address _setRateAddress)
+        Ico(_owner, 0x00, _tokenAddress, _offchainUploaderAddress, _setKYCAddress, _setRateAddress) public {}
     /* Externals */
     function setVesting(address _beneficiary, uint256 _amount, uint256 _startBlock, uint256 _endBlock) external forOwner {
         require( _beneficiary != 0x00 );
