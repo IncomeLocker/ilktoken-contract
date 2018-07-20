@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.2.0
+    1.2.1
 */
 pragma solidity 0.4.24;
 
@@ -116,50 +116,50 @@ contract IcoLib is Ico {
         if ( currentRate == 0 || _input == 0 ) {
             return;
         }
-        _amount = _input.mul(1e8).mul(currentRate).div(1e18).div(currentRateM);
+        _amount = _input.mul(1e8).mul(currentRate).div(1e18).div(currentRateM).div(100); // 1 token eq 0.01 USD
         if ( _amount == 0 ) {
             return;
         }
         if ( currentPhase == phaseType.privateSale1 ) {
-            if        ( _amount >=  25e11 ) {
+            if        ( _amount >=  25e13 ) {
                 _reward = _amount.mul(142).div(100);
-            } else if ( _amount >=  10e11 ) {
+            } else if ( _amount >=  10e13 ) {
                 _reward = _amount.mul(137).div(100);
-            } else if ( _amount >=   2e11 ) {
+            } else if ( _amount >=   2e13 ) {
                 _reward = _amount.mul(133).div(100);
             }
             if ( _reward > 0 && privateSale1Hardcap < _reward ) {
                 _reward = 0;
             }
         } else if ( currentPhase == phaseType.privateSale2 ) {
-            if        ( _amount >= 125e11 ) {
+            if        ( _amount >= 125e13 ) {
                 _reward = _amount.mul(129).div(100);
-            } else if ( _amount >= 100e11 ) {
+            } else if ( _amount >= 100e13 ) {
                 _reward = _amount.mul(124).div(100);
-            } else if ( _amount >=  10e11 ) {
+            } else if ( _amount >=  10e13 ) {
                 _reward = _amount.mul(121).div(100);
             }
             if ( _reward > 0 && privateSale2Hardcap < _reward ) {
                 _reward = 0;
             }
         } else if ( currentPhase == phaseType.sales1 ) {
-            if        ( _amount >=   1e11 ) {
+            if        ( _amount >=   1e13 ) {
                 _reward = _amount.mul(117).div(100);
             }
         } else if ( currentPhase == phaseType.sales2 ) {
-            if        ( _amount >=   1e11 ) {
+            if        ( _amount >=   1e13 ) {
                 _reward = _amount.mul(112).div(100);
             }
         } else if ( currentPhase == phaseType.sales3 ) {
-            if        ( _amount >=   1e11 ) {
+            if        ( _amount >=   1e13 ) {
                 _reward = _amount.mul(109).div(100);
             }
         } else if ( currentPhase == phaseType.sales4 ) {
-            if        ( _amount >=   1e11 ) {
+            if        ( _amount >=   1e13 ) {
                 _reward = _amount.mul(102).div(100);
             }
         } else if ( currentPhase == phaseType.preFinish ) {
-            if        ( _amount >=   1e11 ) {
+            if        ( _amount >=   1e13 ) {
                 _reward = _amount;
             }
         }
