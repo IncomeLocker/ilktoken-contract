@@ -56,11 +56,11 @@ ABI:
 ### ICO Library
 Address:
 ```
-0xd30AFEC62b16973A70B709344DB441Cf054665db
+0x79d59505Fb63556e0c06035dE9AD1B18491d37C7
 ```
 ABI:
 ```
-[ { "constant": true, "inputs": [], "name": "currentPhase", "outputs": [ { "name": "", "type": "uint8" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_currentRate", "type": "uint256" } ], "name": "setCurrentRate", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_libAddress", "type": "address" } ], "name": "changeLibAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "thisBalance", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "libAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_on", "type": "address[]" }, { "name": "_off", "type": "address[]" } ], "name": "setKYC", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_offchainUploaderAddress", "type": "address" } ], "name": "changeOffchainUploaderAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_allow", "type": "address[]" }, { "name": "_disallow", "type": "address[]" } ], "name": "setTransferRight", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "calcVesting", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_reward", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "setKYCAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "currentRateM", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_setRateAddress", "type": "address" } ], "name": "changeSetRateAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "replaceOwner", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_beneficiaries", "type": "address[]" }, { "name": "_rewards", "type": "uint256[]" } ], "name": "offchainUpload", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_setKYCAddress", "type": "address" } ], "name": "changeKYCAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "allowTransfer", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_allow", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "setRateAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "offchainUploaderAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "KYC", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_beneficiary", "type": "address" }, { "name": "_amount", "type": "uint256" }, { "name": "_startBlock", "type": "uint256" }, { "name": "_endBlock", "type": "uint256" } ], "name": "setVesting", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_phase", "type": "uint8" } ], "name": "setCurrentPhase", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_input", "type": "uint256" } ], "name": "calculateReward", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_reward", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "privateSale1Hardcap", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "vesting", "outputs": [ { "name": "amount", "type": "uint256" }, { "name": "startBlock", "type": "uint256" }, { "name": "endBlock", "type": "uint256" }, { "name": "claimedAmount", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "transferRight", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "privateSale2Hardcap", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "currentRate", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "token", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "claimVesting", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "name": "_owner", "type": "address" }, { "name": "_libAddress", "type": "address" }, { "name": "_tokenAddress", "type": "address" }, { "name": "_offchainUploaderAddress", "type": "address" }, { "name": "_setKYCAddress", "type": "address" }, { "name": "_setRateAddress", "type": "address" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "payable": true, "stateMutability": "payable", "type": "fallback" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_owner", "type": "address" }, { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_input", "type": "uint256" }, { "indexed": false, "name": "_output", "type": "uint256" } ], "name": "Brought", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_amount", "type": "uint256" }, { "indexed": false, "name": "_startBlock", "type": "uint256" }, { "indexed": false, "name": "_endBlock", "type": "uint256" } ], "name": "VestingDefined", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_amount", "type": "uint256" } ], "name": "VestingClaimed", "type": "event" } ]
+[ { "constant": true, "inputs": [], "name": "currentPhase", "outputs": [ { "name": "", "type": "uint8" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_currentRate", "type": "uint256" } ], "name": "setCurrentRate", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_libAddress", "type": "address" } ], "name": "changeLibAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [], "name": "thisBalance", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "libAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_on", "type": "address[]" }, { "name": "_off", "type": "address[]" } ], "name": "setKYC", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_offchainUploaderAddress", "type": "address" } ], "name": "changeOffchainUploaderAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_allow", "type": "address[]" }, { "name": "_disallow", "type": "address[]" } ], "name": "setTransferRight", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "calcVesting", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_reward", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "setKYCAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "currentRateM", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "owner", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_setRateAddress", "type": "address" } ], "name": "changeSetRateAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "replaceOwner", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [], "name": "buy", "outputs": [], "payable": true, "stateMutability": "payable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_beneficiaries", "type": "address[]" }, { "name": "_rewards", "type": "uint256[]" } ], "name": "offchainUpload", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_setKYCAddress", "type": "address" } ], "name": "changeKYCAddress", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_owner", "type": "address" } ], "name": "allowTransfer", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_allow", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "setRateAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "offchainUploaderAddress", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "KYC", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [ { "name": "_beneficiary", "type": "address" }, { "name": "_amount", "type": "uint256" }, { "name": "_startBlock", "type": "uint256" }, { "name": "_endBlock", "type": "uint256" } ], "name": "setVesting", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": false, "inputs": [ { "name": "_phase", "type": "uint8" } ], "name": "setCurrentPhase", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "constant": true, "inputs": [ { "name": "_input", "type": "uint256" } ], "name": "calculateReward", "outputs": [ { "name": "_success", "type": "bool" }, { "name": "_reward", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "privateSale1Hardcap", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "vesting", "outputs": [ { "name": "amount", "type": "uint256" }, { "name": "startBlock", "type": "uint256" }, { "name": "endBlock", "type": "uint256" }, { "name": "claimedAmount", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [ { "name": "", "type": "address" } ], "name": "transferRight", "outputs": [ { "name": "", "type": "bool" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "privateSale2Hardcap", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "currentRate", "outputs": [ { "name": "", "type": "uint256" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": true, "inputs": [], "name": "token", "outputs": [ { "name": "", "type": "address" } ], "payable": false, "stateMutability": "view", "type": "function" }, { "constant": false, "inputs": [], "name": "claimVesting", "outputs": [], "payable": false, "stateMutability": "nonpayable", "type": "function" }, { "inputs": [ { "name": "_owner", "type": "address" }, { "name": "_tokenAddress", "type": "address" }, { "name": "_offchainUploaderAddress", "type": "address" }, { "name": "_setKYCAddress", "type": "address" }, { "name": "_setRateAddress", "type": "address" } ], "payable": false, "stateMutability": "nonpayable", "type": "constructor" }, { "payable": true, "stateMutability": "payable", "type": "fallback" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_owner", "type": "address" }, { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_input", "type": "uint256" }, { "indexed": false, "name": "_output", "type": "uint256" } ], "name": "Brought", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_amount", "type": "uint256" }, { "indexed": false, "name": "_startBlock", "type": "uint256" }, { "indexed": false, "name": "_endBlock", "type": "uint256" } ], "name": "VestingDefined", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_beneficiary", "type": "address" }, { "indexed": false, "name": "_amount", "type": "uint256" } ], "name": "VestingClaimed", "type": "event" } ]
 ```
 
 ## Details of components
@@ -79,56 +79,55 @@ Following phases are defined:
 1. **__PHASE PAUSE__**: All affected functions are disabled. 
 2. **__PHASE PRIVATE SALE#1__**: All affected functions are disabled, except `acceptOffChainDeposit()`
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >25.000 ILK   | 42% | |
-| >10.000 ILK   | 37% | |
-| >=2.000 ILK   | 33% | |
-| <2.000 ILK    | throw | |
+| Contribution     | Bonus multipl |
+| ---------------- |--------------:|
+| >=2.500.000 ILK  | 42% |
+| >=1.000.000 ILK  | 37% |
+| >=200.000 ILK  | 33% |
+| <200.000 ILK   | throw |
 
 3. **__PHASE PRIVATE SALE#2__**: All affected functions are disabled, except `acceptDeposit()` and `acceptOffChainDeposit()`
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >125.000 ILK   | 29% | |
-| >100.000 ILK   | 24% | |
-| >=10.000 ILK   | 21% | |
-| <10.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=12.500.000 ILK   | 29% |
+| >=10.000.000 ILK   | 24% |
+| >=1.000.000 ILK   | 21% |
+| <1.000.000 ILK    | throw |
 
 4. **__PHASE SALE#1__**: same as PRIVATE SALE#2 phase but different parameters
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000 ILK   | 17% | |
-| <1.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=100.000 ILK   | 17% |
+| <100.000 ILK    | throw |
 
 5. **__PHASE SALE#2__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000 ILK   | 12% | |
-| <1.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=100.000 ILK   | 12% |
+| <100.000 ILK    | throw |
 
 6. **__PHASE SALE#3__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000 ILK   | 9% | |
-| <1.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=100.000 ILK   | 9% |
+| <100.000 ILK    | throw |
 
 7. **__PHASE SALE#4__**: same as PRIVATE SALE#2 phase but different paramteres
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000 ILK   | 2% | |
-| <1.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=100.000 ILK   | 2% |
+| <100.000 ILK    | throw |
 
 8. **__PHASE PRE FINISH__**: All affected functions are enabled
 
-| Contribution  | Bonus multipl | | 
-| ------------- |--------------:|-|
-| >=1.000 ILK   | 0% | |
-| <1.000 ILK    | throw | |
+| Contribution  | Bonus multipl |
+| ------------- |--------------:|
+| >=0 ILK   | 0% |
 
 9. **__PHASE FINISH__**: All affected functions are disabled, except token transfers functions
 
