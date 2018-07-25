@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.3.1
+    1.3.2
 */
 pragma solidity 0.4.24;
 
@@ -143,19 +143,19 @@ contract IcoLib is Ico {
                 _reward = 0;
             }
         } else if ( currentPhase == phaseType.sales1 ) {
-            if        ( _amount >=   1e13 ) {
+            if        ( _amount >=   1e12 ) {
                 _reward = _amount.mul(117).div(100);
             }
         } else if ( currentPhase == phaseType.sales2 ) {
-            if        ( _amount >=   1e13 ) {
+            if        ( _amount >=   1e12 ) {
                 _reward = _amount.mul(112).div(100);
             }
         } else if ( currentPhase == phaseType.sales3 ) {
-            if        ( _amount >=   1e13 ) {
+            if        ( _amount >=   1e12 ) {
                 _reward = _amount.mul(109).div(100);
             }
         } else if ( currentPhase == phaseType.sales4 ) {
-            if        ( _amount >=   1e13 ) {
+            if        ( _amount >=   1e12 ) {
                 _reward = _amount.mul(102).div(100);
             }
         } else if ( currentPhase == phaseType.preFinish ) {
