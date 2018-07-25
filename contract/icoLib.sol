@@ -1,7 +1,7 @@
 /*
     Initial Coin Offering Library
     icoLib.sol
-    1.3.1
+    1.3.2
 */
 pragma solidity 0.4.24;
 
