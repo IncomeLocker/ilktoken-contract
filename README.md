@@ -1,6 +1,10 @@
 # ilktoken-contract
 Solidity contract for inlock (ILK) token. Details on https://inlock.io/
 
+Whitepaper: http://inlock.io/whitepaper
+
+Tokenomics: http://inlock.io/tokenomics
+
 Following information based on Income Locker (inlock.io) whitepaper: https://inlock.io/wp-content/uploads/2018/06/Whitepaper_V1.06.pdf
  - Latest version: V1.06 release date: 2018.06.21
 
