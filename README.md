@@ -21,6 +21,9 @@ The InLock token is made up of these contracts structure:<br>
 |   | preFinish | 7 | 13/OCT - token deploy | 
 |   | finish | 8 | TBA |
 
+## Unsold tokens
+All unsold tokens will be locked until September 30, 2019 (1 year after the token sale). These tokens will be distributed among all token sale participants if they still have ILK tokens as the same address they provided during the token sale. We wish to reward participants for their long term commitment. The distribution is based on the number of tokens they still have in their wallets proportionally to others. ILK tokens purchased and sent to these addresses do not count towards distribution.
+
 ## Deployed contracts
 Contract are deployed to the Ethereum Foundation (main) network.
 
