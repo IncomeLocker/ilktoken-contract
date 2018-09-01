@@ -1,7 +1,8 @@
 # InLock contracts
 Solidity contracts for InLock (ILK) token. Details on https://inlock.io/
 
-Whitepaper: http://inlock.io/whitepaper
+Whitepaper: http://inlock.io/whitepaper 
+
 Tokenomics: http://inlock.io/tokenomics
 
 ## `Token` contract
