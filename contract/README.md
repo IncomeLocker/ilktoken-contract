@@ -1,6 +1,9 @@
 # InLock contracts
 Solidity contracts for InLock (ILK) token. Details on https://inlock.io/
 
+Whitepaper: http://inlock.io/whitepaper
+Tokenomics: http://inlock.io/tokenomics
+
 ## `Token` contract
 Token contract uses the standard ERC20 functions ( https://en.wikipedia.org/wiki/ERC20 ) with some special functions.
 
