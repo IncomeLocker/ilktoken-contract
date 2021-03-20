@@ -54,7 +54,7 @@ ABI:
 ### Token Library
 Address:
 ```
-0xD10167921822Fb5a6637f1B7a153fac7ea896cFf
+0xBE482A0060be6eA2e6A589E46748De75B70Ee95C
 ```
 ABI:
 ```
