@@ -25,7 +25,6 @@ contract TokenLib is Token {
         bool    _subResult;
         bool    _allowed;
         require( _to.length == _amount.length );
-        ( _subResult, _allowed ) = ico.allowTransfer(msg.sender);
         require( _subResult && _allowed );
         require( db.bulkTransfer(msg.sender, _to, _amount) );
         for ( i=0 ; i<_to.length ; i++ ) {
@@ -65,8 +64,7 @@ contract TokenLib is Token {
         bool _subResult;
         bool _allowed;
         require( _amount > 0 );
-        require( _from != 0x00 && _to != 0x00 );
-        ( _subResult, _allowed ) = ico.allowTransfer(_from);
+        require( _from != 0x00 && _to != 0x00 && _from != _to );
         require( _subResult && _allowed );
         require( db.transfer(_from, _to, _amount) );
         emit Transfer(_from, _to, _amount);
