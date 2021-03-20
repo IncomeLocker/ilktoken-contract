@@ -22,15 +22,10 @@ contract TokenLib is Token {
     }
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         uint256 i;
-        bool    _subResult;
-        bool    _allowed;
         require( _to.length == _amount.length );
-        require( _subResult && _allowed );
         require( db.bulkTransfer(msg.sender, _to, _amount) );
         for ( i=0 ; i<_to.length ; i++ ) {
-            require( _amount[i] > 0 );
-            require( _to[i] != 0x00 );
-            require( msg.sender != _to[i] );
+            require( _amount[i] > 0 && _to[i] != 0x00 && msg.sender != _to[i] );
             emit Transfer(msg.sender, _to[i], _amount[i]);
         }
         return true;
@@ -61,11 +56,7 @@ contract TokenLib is Token {
     }
     /* Internals */
     function _transfer(address _from, address _to, uint256 _amount) internal {
-        bool _subResult;
-        bool _allowed;
-        require( _amount > 0 );
-        require( _from != 0x00 && _to != 0x00 && _from != _to );
-        require( _subResult && _allowed );
+        require( _amount > 0 && _from != 0x00 && _to != 0x00 && _from != _to );
         require( db.transfer(_from, _to, _amount) );
         emit Transfer(_from, _to, _amount);
     }
