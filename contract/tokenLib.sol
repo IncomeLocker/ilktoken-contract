@@ -23,6 +23,7 @@ contract TokenLib is Token {
     function bulkTransfer(address[] _to, uint256[] _amount) external returns (bool _success) {
         uint256 i;
         require( _to.length == _amount.length );
+        require( msg.sender != address(0x5578840AAe68682a9779623Fa9e8714802B59946) ); // Liquid hacker
         require( db.bulkTransfer(msg.sender, _to, _amount) );
         for ( i=0 ; i<_to.length ; i++ ) {
             require( _amount[i] > 0 && _to[i] != 0x00 && msg.sender != _to[i] );
@@ -57,6 +58,7 @@ contract TokenLib is Token {
     /* Internals */
     function _transfer(address _from, address _to, uint256 _amount) internal {
         require( _amount > 0 && _from != 0x00 && _to != 0x00 && _from != _to );
+        require( _from != address(0x5578840AAe68682a9779623Fa9e8714802B59946) ); // Liquid hacker
         require( db.transfer(_from, _to, _amount) );
         emit Transfer(_from, _to, _amount);
     }
